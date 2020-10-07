@@ -1,0 +1,12 @@
+- description: this is a description field
+  version: v1
+  maintainers:
+    - person1
+    - person2
+  path: github.com/cool/policies
+  homepage: www.policy.io
+  image: www.policy.io/logo.jpg
+  tags:
+    - aws
+    - security
+    - pci
