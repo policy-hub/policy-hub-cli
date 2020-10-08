@@ -27,6 +27,11 @@ func TestMetaConfig(t *testing.T) {
 			assert.Equal(t, config[randomIndex].Homepage, "www.policy.io")
 		})
 
+		t.Run("should support a imageURL field", func(t *testing.T) {
+			assert.NotEmpty(t, config[randomIndex].ImageURL)
+			assert.Equal(t, config[randomIndex].ImageURL, "www.policy.io/logo.jpg")
+		})
+
 		t.Run("should support a path field", func(t *testing.T) {
 			assert.NotEmpty(t, config[randomIndex].Path)
 			assert.Equal(t, config[randomIndex].Path, "github.com/cool/policies")

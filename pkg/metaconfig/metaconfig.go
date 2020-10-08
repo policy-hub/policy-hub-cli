@@ -9,6 +9,7 @@ type MetadataConfig struct {
 	Maintainers []string
 	Path        string
 	Homepage    string
+	ImageURL    string `yaml:"image_url"`
 }
 
 func Load(config []byte) ([]MetadataConfig, error) {

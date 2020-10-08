@@ -5,7 +5,7 @@
     - person2
   path: github.com/cool/policies
   homepage: www.policy.io
-  image: www.policy.io/logo.jpg
+  image_url: www.policy.io/logo.jpg
   labels:
     - aws
     - security
@@ -17,7 +17,7 @@
     - person2
   path: github.com/cool/policies
   homepage: www.policy.io
-  image: www.policy.io/logo.jpg
+  image_url: www.policy.io/logo.jpg
   labels:
     - aws
     - security
