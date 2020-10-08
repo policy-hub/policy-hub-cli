@@ -2,6 +2,7 @@ package metaconfig_test
 
 import (
 	"io/ioutil"
+	"math/rand"
 	"testing"
 
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
@@ -15,26 +16,33 @@ func TestMetaConfig(t *testing.T) {
 		config, err := metaconfig.Load(f)
 		assert.NoError(t, err, "Error loading config")
 		assert.NotEmpty(t, config)
+		randomIndex := rand.Intn(len(config) - 1)
 
 		t.Run("should support metadata for multiple packages in a single file", func(t *testing.T) {
 			assert.Greater(t, len(config), 1)
 		})
 
 		t.Run("should support a description field", func(t *testing.T) {
-			assert.NotEmpty(t, config[0].Description)
-			assert.Equal(t, config[0].Description, "this is a description field")
+			assert.NotEmpty(t, config[randomIndex].Description)
+			assert.Equal(t, config[randomIndex].Description, "this is a description field")
 		})
 
 		t.Run("should support a version field", func(t *testing.T) {
-			assert.NotEmpty(t, config[0].Version)
-			assert.Equal(t, config[0].Version, "v1")
+			assert.NotEmpty(t, config[randomIndex].Version)
+			assert.Equal(t, config[randomIndex].Version, "v1")
 		})
 
 		t.Run("should support a labels field", func(t *testing.T) {
-			assert.NotEmpty(t, config[0].Labels)
-			assert.Contains(t, config[0].Labels, "aws")
-			assert.Contains(t, config[0].Labels, "security")
-			assert.NotContains(t, config[0].Labels, "random-nonesense-that-doesnt-exist")
+			assert.NotEmpty(t, config[randomIndex].Labels)
+			assert.Contains(t, config[randomIndex].Labels, "aws")
+			assert.Contains(t, config[randomIndex].Labels, "security")
+			assert.NotContains(t, config[randomIndex].Labels, "random-nonesense-that-doesnt-exist")
+		})
+
+		t.Run("should support a maintainers field", func(t *testing.T) {
+			assert.NotEmpty(t, config[randomIndex].Maintainers)
+			assert.Contains(t, config[randomIndex].Maintainers, "person1")
+			assert.NotContains(t, config[randomIndex].Maintainers, "random-nonesense-that-doesnt-exist")
 		})
 	})
 }

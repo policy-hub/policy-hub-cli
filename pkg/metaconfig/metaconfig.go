@@ -6,6 +6,7 @@ type MetadataConfig struct {
 	Description string
 	Version     string
 	Labels      []string
+	Maintainers []string
 }
 
 func Load(config []byte) ([]MetadataConfig, error) {
