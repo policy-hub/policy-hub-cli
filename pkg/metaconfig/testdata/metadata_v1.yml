@@ -6,7 +6,7 @@
   path: github.com/cool/policies
   homepage: www.policy.io
   image: www.policy.io/logo.jpg
-  tags:
+  labels:
     - aws
     - security
     - pci
@@ -18,7 +18,7 @@
   path: github.com/cool/policies
   homepage: www.policy.io
   image: www.policy.io/logo.jpg
-  tags:
+  labels:
     - aws
     - security
     - pci

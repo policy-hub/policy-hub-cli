@@ -29,5 +29,12 @@ func TestMetaConfig(t *testing.T) {
 			assert.NotEmpty(t, config[0].Version)
 			assert.Equal(t, config[0].Version, "v1")
 		})
+
+		t.Run("should support a labels field", func(t *testing.T) {
+			assert.NotEmpty(t, config[0].Labels)
+			assert.Contains(t, config[0].Labels, "aws")
+			assert.Contains(t, config[0].Labels, "security")
+			assert.NotContains(t, config[0].Labels, "random-nonesense-that-doesnt-exist")
+		})
 	})
 }
