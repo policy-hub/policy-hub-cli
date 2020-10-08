@@ -3,6 +3,7 @@ package metaconfig
 import "gopkg.in/yaml.v2"
 
 type MetadataConfig struct {
+	Name        string
 	Description string
 	Version     string
 	Labels      []string

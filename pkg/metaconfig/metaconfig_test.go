@@ -22,6 +22,11 @@ func TestMetaConfig(t *testing.T) {
 			assert.Greater(t, len(config), 1)
 		})
 
+		t.Run("should support a name field", func(t *testing.T) {
+			assert.NotEmpty(t, config[randomIndex].Name)
+			assert.Equal(t, config[randomIndex].Name, "cool-policy")
+		})
+
 		t.Run("should support a homepage field", func(t *testing.T) {
 			assert.NotEmpty(t, config[randomIndex].Homepage)
 			assert.Equal(t, config[randomIndex].Homepage, "www.policy.io")

@@ -1,4 +1,5 @@
 - description: this is a description field
+  name: cool-policy
   version: v1
   maintainers:
     - person1
@@ -11,6 +12,7 @@
     - security
     - pci
 - description: this is a description field
+  name: cool-policy
   version: v1
   maintainers:
     - person1
