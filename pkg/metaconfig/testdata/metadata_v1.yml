@@ -1,0 +1,26 @@
+- description: this is a description field
+  name: cool-policy
+  version: v1
+  maintainers:
+    - person1
+    - person2
+  path: github.com/cool/policies
+  homepage: www.policy.io
+  image_url: www.policy.io/logo.jpg
+  labels:
+    - aws
+    - security
+    - pci
+- description: this is a description field
+  name: cool-policy
+  version: v1
+  maintainers:
+    - person1
+    - person2
+  path: github.com/cool/policies
+  homepage: www.policy.io
+  image_url: www.policy.io/logo.jpg
+  labels:
+    - aws
+    - security
+    - pci
