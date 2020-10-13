@@ -26,12 +26,13 @@ func NewRootCommand() *cobra.Command {
 		SilenceUsage: true,
 	}
 
+	rootCmd.AddCommand(newSearchCommand())
+
 	return rootCmd
 }
 
 // initializeConfig initializes viper config and binds viper to the cobra flags.
 func initializeConfig(cmd *cobra.Command) error {
-
 	viper.SetConfigName(defaultConfigFilename)
 	viper.AddConfigPath(".")
 
