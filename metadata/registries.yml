@@ -1,7 +1,7 @@
 - path: https://github.com/open-policy-agent/contrib/api_authz/docker/policy
   description: |
-"HTTP API Authorization with OPA
-This directory helps provide fine-grained, policy-based control over who can run which RESTful APIs."
+    "HTTP API Authorization with OPA
+    This directory helps provide fine-grained, policy-based control over who can run which RESTful APIs."
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -13,12 +13,12 @@ This directory helps provide fine-grained, policy-based control over who can run
 
 - path: https://github.com/open-policy-agent/contrib/cloud-foundry/policies
   description: |
-"This directory provides configuration policies and validators for you Cloud Foundry Deployments.
-With the use of OPA, bundles of policies to be used with conftest for fitness function testing your platform.
+    "This directory provides configuration policies and validators for you Cloud Foundry Deployments.
+    With the use of OPA, bundles of policies to be used with conftest for fitness function testing your platform.
 
-OPA provides the policy rules as well as policy language rego. Conftest provides developers with local tooling to do static analysis of configuration files so that engineers can shift left on testing infrastructure as code.
+    OPA provides the policy rules as well as policy language rego. Conftest provides developers with local tooling to do static analysis of configuration files so that engineers can shift left on testing infrastructure as code.
 
-Why you should care? Being able to test baseline values before attempting to deploy allows operators to fail fast. These policies along with these tools are used to help bridge that gap."
+    Why you should care? Being able to test baseline values before attempting to deploy allows operators to fail fast. These policies along with these tools are used to help bridge that gap."
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -29,7 +29,7 @@ Why you should care? Being able to test baseline values before attempting to dep
 
 - path: https://github.com/open-policy-agent/contrib/dart_authz/policies
   description: |
-"This repository shows how to integrate a service written in Dart with OPA to perform API authorization. It is a direct port of the OPA-Python example, with a few enhancements."
+    "This repository shows how to integrate a service written in Dart with OPA to perform API authorization. It is a direct port of the OPA-Python example, with a few enhancements."
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -41,22 +41,22 @@ Why you should care? Being able to test baseline values before attempting to dep
 
 - path: https://github.com/open-policy-agent/contrib/image_enforcer/policies
   description: |
-"This directory shows how you can use OPA to enforce admission policies on container images in Kubernetes.
+    "This directory shows how you can use OPA to enforce admission policies on container images in Kubernetes.
 
-You can use this project to enforce simple admission policies on images such as:
+    You can use this project to enforce simple admission policies on images such as:
 
-    Naming conventions
-    Version pinning (e.g., no latest)
-    Registry usage (e.g., production must use internal registry)
+        Naming conventions
+        Version pinning (e.g., no latest)
+        Registry usage (e.g., production must use internal registry)
 
-Using the openpolicyagent/clair-layer-sync image, you can also enforce more sophisticated policies based on image vulnerability scanning.
+    Using the openpolicyagent/clair-layer-sync image, you can also enforce more sophisticated policies based on image vulnerability scanning.
 
-This directory contains the following:
+    This directory contains the following:
 
-    Kubernetes manifests for deploying the image enforcer.
-    Steps to use the image enforcer.
-    Source for the openpolicyagent/clair-layer-sync Docker image.
-"
+        Kubernetes manifests for deploying the image enforcer.
+        Steps to use the image enforcer.
+        Source for the openpolicyagent/clair-layer-sync Docker image.
+    "
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -67,13 +67,13 @@ This directory contains the following:
 
 - path: https://github.com/open-policy-agent/contrib/k8s_node_selector
   description: |
-"Cloud providers support the concept of agentpools or nodepools in a Kubernetes (Azure AKS, GCP and AWS). Each pool is a group of VMs with a specific spec/type. This allows a cluster to support, for example, both high memory VMs and GPU VMs. Workloads can then be scheduled onto these different VM types using nodeSelectors.
+    "Cloud providers support the concept of agentpools or nodepools in a Kubernetes (Azure AKS, GCP and AWS). Each pool is a group of VMs with a specific spec/type. This allows a cluster to support, for example, both high memory VMs and GPU VMs. Workloads can then be scheduled onto these different VM types using nodeSelectors.
 
-A nodeSelector provides controls around which nodes each pod gets scheduled on. Typically developers don't include nodeSelectors which means that an admin needs to write a mutating admission controller to tell k8s to automatically add them and assign the workload to the correct type of machine in the cluster.
+    A nodeSelector provides controls around which nodes each pod gets scheduled on. Typically developers don't include nodeSelectors which means that an admin needs to write a mutating admission controller to tell k8s to automatically add them and assign the workload to the correct type of machine in the cluster.
 
-In this example, we show how to use an OPA Policy to assign nodeSelectors to ensure that pods from different k8s namespaces run on different agentpools.
+    In this example, we show how to use an OPA Policy to assign nodeSelectors to ensure that pods from different k8s namespaces run on different agentpools.
 
-The policy looks at the namespace in which the pod is to be scheduled and checks for an agentpool label. If the namespace has a label set then a nodeselector is set to assign the pod to the agentpool."
+    The policy looks at the namespace in which the pod is to be scheduled and checks for an agentpool label. If the namespace has a label set then a nodeselector is set to assign the pod to the agentpool."
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -86,10 +86,10 @@ The policy looks at the namespace in which the pod is to be scheduled and checks
 
 - path: https://github.com/open-policy-agent/contrib/puppet_example
   description: |
-"Puppet Authorization Example
+    "Puppet Authorization Example
 
-This example shows how OPA can authorize changes to Puppet manifests.
-"
+    This example shows how OPA can authorize changes to Puppet manifests.
+    "
   maintainers:
     - https://github.com/tsandall
   version: master
@@ -100,9 +100,9 @@ This example shows how OPA can authorize changes to Puppet manifests.
 
 - path: https://github.com/crdant/cf-manifest-policy/policy
   description: |
-"A set of OPA policies to validate Cloud Foundry or Tanzu Application Service deployment manifests using Conftest.
+    "A set of OPA policies to validate Cloud Foundry or Tanzu Application Service deployment manifests using Conftest.
 
-Policies help you avoid obvious errors, e.g. no applications defined, and enforce best practices like running more than one instance. They can be used to validate your manifests during development or as part of your CI/CD pipeline."
+    Policies help you avoid obvious errors, e.g. no applications defined, and enforce best practices like running more than one instance. They can be used to validate your manifests during development or as part of your CI/CD pipeline."
   maintainers:
     - https://github.com/crdant
   version: v0.0.4
