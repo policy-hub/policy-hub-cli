@@ -152,4 +152,70 @@
     - kubernetes
     - gatekeeper
 
+- path: https://github.com/redhat-cop/rego-policies/policy
+  description: |
+    "Rego policies collection.
+    Violations
+      Namespace has a NetworkPolicy
+      Namespace has a ResourceQuota
+      Common k8s labels are set
+      Container env has CONTAINER_MAX_MEMORY set
+      Container image is not set as latest
+      Container image is not from a known registry
+      Container does not set Java Xmx option
+      Label key is consistent
+      Container liveness and readiness probes are equal
+      Container liveness prob is not set
+      Container readiness prob is not set
+      Container resource limits CPU not set
+      Container resource limits memory not greater than
+      Container resource limits memory not set
+      Container resources limit memory has incorrect unit
+      Container resources requests cpu has incorrect unit
+      Container resource requests memory not greater than
+      Container secret not mounted as envs
+      Container volume mount path is consistent
+      Container volume mount not set
+      DeploymentConfig triggers not set
+      Pod hostnetwork not set
+      Pod replica below 1
+      Pod replica is not odd
+      RoleBinding has apiGroup set
+      RoleBinding has kind set
+      Route has TLS Termination Defined
+      BuildConfig no longer served by v1
+      DeploymentConfig no longer served by v1
+      ImageStream no longer served by v1
+      ProjectRequest no longer served by v1
+      RoleBinding no longer served by v1
+      Route no longer served by v1
+      SecurityContextConstraints no longer served by v1
+      Template no longer served by v1
+      BuildConfig exposeDockerSocket deprecated
+      authorization openshift io is deprecated
+      automationbroker io v1alpha1 is deprecated
+      operators coreos com v1 CatalogSourceConfigs is deprecated
+      operators coreos com v2 CatalogSourceConfigs is deprecated
+      operators coreos com v1 OperatorSource is deprecated
+      osb openshift io v1 is deprecated
+      servicecatalog k8s io v1beta1 is deprecated
+      BuildConfig jenkinsPipelineStrategy is deprecated
+      Deployment has a matching PodDisruptionBudget
+      Deployment has matching PersistentVolumeClaim
+      Deployment has a matching Service
+      Deployment has matching ServiceAccount
+      Service has matching ServiceMonitor
+      Image contains expected SHA in history.
+      Image size is not greater than an expected value
+    "
+  maintainers:
+    - https://github.com/garethahealy
+  version: v1.2.0
+  homepage: https://github.com/redhat-cop/rego-policies
+  name: redhat-cop.rego-policies
+  labels:
+    - k8s
+    - kubernetes
+    - gatekeeper
+
 
