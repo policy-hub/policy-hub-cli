@@ -113,7 +113,7 @@
     - tanzu
     - TAS
 
-- path: https://github.com/plexsystems/konstraint/tree/main/examples
+- path: https://github.com/plexsystems/konstraint/examples
   description: |
     "a Rego library to assist with writing policies for Kubernetes resources.
     sample policies and libraries helpful for use with gatekeeper
