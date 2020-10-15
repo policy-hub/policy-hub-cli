@@ -218,4 +218,20 @@
     - kubernetes
     - gatekeeper
 
+- path: https://github.com/swade1987/deprek8ion/policies
+  description: |
+    "Deprek8ion
+
+    A set of rego policies to monitor Kubernetes APIs deprecations.
+
+    The Kubernetes API deprecations can be found using https://relnotes.k8s.io/?markdown=deprecated."
+  maintainers:
+    - https://github.com/swade1987
+  version: master
+  homepage: https://github.com/swade1987/deprek8ion
+  name: deprek8ion
+  labels:
+    - k8s
+    - kubernetes
+    - gatekeeper
 
