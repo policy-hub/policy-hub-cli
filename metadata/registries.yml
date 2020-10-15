@@ -113,4 +113,43 @@
     - tanzu
     - TAS
 
+- path: https://github.com/plexsystems/konstraint/tree/main/examples
+  description: |
+    "a Rego library to assist with writing policies for Kubernetes resources.
+    sample policies and libraries helpful for use with gatekeeper
+
+    any-warn-deprecated-api-versions
+    container-deny-added-caps
+    container-deny-escalation
+    container-deny-latest-tag
+    container-deny-privileged
+    container-deny-without-resource-constraints
+    container-warn-no-ro-fs
+    lib
+    pod-deny-host-alias
+    pod-deny-host-ipc
+    pod-deny-host-network
+    pod-deny-host-pid
+    pod-deny-without-runasnonroot
+    psp-deny-added-caps
+    psp-deny-escalation
+    psp-deny-host-alias
+    psp-deny-host-ipc
+    psp-deny-host-network
+    psp-deny-host-pid
+    psp-deny-privileged
+    psp-warn-no-ro-fs
+    role-deny-use-privileged-psp
+    test-data
+    "
+  maintainers:
+    - https://github.com/garethahealy
+  version: v0.8.0
+  homepage: https://github.com/plexsystems/konstraint
+  name: konstraint
+  labels:
+    - k8s
+    - kubernetes
+    - gatekeeper
+
 
