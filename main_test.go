@@ -18,7 +18,7 @@ func TestMainCLI(t *testing.T) {
 	assert.NoError(t, err, "Error creating binary")
 	defer gexec.CleanupBuildArtifacts()
 
-	t.Run("we can search repositories", func(t *testing.T) {
+	t.Run("we can search registries", func(t *testing.T) {
 		t.Skip("the search command seems to hang.")
 		command := exec.Command(pathToMainCLI, "search", "k8s", "-r", "./metadata/registries.yml")
 		session, err := gexec.Start(command, os.Stdout, os.Stdout)
@@ -26,7 +26,7 @@ func TestMainCLI(t *testing.T) {
 		assert.NoError(t, err, "Error running search command")
 	})
 
-	t.Run("we can download repositories", func(t *testing.T) {
+	t.Run("we can download registries", func(t *testing.T) {
 		policyPackageName := "contrib.image_enforcer"
 		defer os.RemoveAll(policyPackageName)
 		outputSpy := bytes.NewBufferString("")
