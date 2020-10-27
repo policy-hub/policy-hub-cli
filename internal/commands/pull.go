@@ -34,7 +34,6 @@ func (c *pullConfig) run(name string) error {
 	if err != nil {
 		return fmt.Errorf("load metadata: %w", err)
 	}
-	fmt.Println(metadata)
 
 	var urlPath string
 	for _, record := range metadata {
