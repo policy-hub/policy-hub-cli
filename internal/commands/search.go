@@ -35,6 +35,8 @@ func (c *searchConfig) run(query string) error {
 	}
 
 	e, err := search.Load()
+	defer e.Close()
+	
 	if err != nil {
 		return fmt.Errorf("load engine: %w", err)
 	}
