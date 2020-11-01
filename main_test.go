@@ -19,7 +19,6 @@ func TestMainCLI(t *testing.T) {
 	defer gexec.CleanupBuildArtifacts()
 
 	t.Run("we can search registries", func(t *testing.T) {
-		t.Skip("the search command seems to hang.")
 		command := exec.Command(pathToMainCLI, "search", "k8s", "-r", "./metadata/registries.yml")
 		session, err := gexec.Start(command, os.Stdout, os.Stdout)
 		session.Wait()

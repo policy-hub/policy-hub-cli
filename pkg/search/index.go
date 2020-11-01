@@ -1,6 +1,7 @@
 package search
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -21,10 +22,6 @@ type Engine struct {
 // Load loads the engine and initializes the Index.
 func Load() (*Engine, error) {
 	e := &Engine{}
-	if err := constructIndex(); err != nil {
-		return nil, fmt.Errorf("construct index: %w", err)
-	}
-
 	index, err := loadIndex()
 	if err != nil {
 		return nil, fmt.Errorf("load index: %w", err)
@@ -53,40 +50,56 @@ func (e *Engine) Query(query string) (*bleve.SearchResult, error) {
 	return e.index.Search(search)
 } 
 
+func (e *Engine) Close() error {
+	return e.index.Close()
+}
+
 // constructIndex builds a search index
-func constructIndex() error {
+func constructIndex() (bleve.Index, error) {
 	cacheDir := cacheDirectory()
 	if _, err := os.Stat(cacheDir); os.IsNotExist(err) {
 		return setupIndexDirectory()
 	}
 
-	return nil
+	return nil, errors.New("called constructIndex while index already exists")
 }
 
 // loadIndex loads the index from disk
 func loadIndex() (bleve.Index, error) {
-	return bleve.Open(indexDirectory())
+	index, err := bleve.Open(indexDirectory())
+	if err == bleve.ErrorIndexPathDoesNotExist {
+		index, err := constructIndex(); 
+		if err != nil {
+			return nil, fmt.Errorf("construct index: %w", err)
+		}
+
+		return index, nil
+	} else if err != nil {
+		return nil, fmt.Errorf("open index: %w", err)
+	}
+
+	return index, nil
 }
 
 // setupIndexDirectory setups the index directory
-func setupIndexDirectory() error {
+func setupIndexDirectory() (bleve.Index, error) {
 	cacheDir := cacheDirectory()
 	if err := os.MkdirAll(cacheDir, os.ModePerm); err != nil {
-		return fmt.Errorf("make search dir: %w", err)
+		return nil, fmt.Errorf("make search dir: %w", err)
 	}
 
 	_, err := os.Create(filepath.Join(cacheDir, IndexVersion))
 	if err != nil {
-		return fmt.Errorf("create version file: %w", err)
+		return nil, fmt.Errorf("create version file: %w", err)
 	}
  
 	mapping := bleve.NewIndexMapping()
-	_, err = bleve.New(indexDirectory(), mapping)
+	index, err := bleve.New(indexDirectory(), mapping)
 	if err != nil {
-		return fmt.Errorf("creating index: %w", err)
+		return nil, fmt.Errorf("creating index: %w", err)
 	}
 
-	return nil
+	return index, nil
 }
 
 // cacheDirectory returns the directory to cache policy-cli configs
