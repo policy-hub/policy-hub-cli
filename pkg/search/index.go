@@ -3,10 +3,13 @@ package search
 import (
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/blevesearch/bleve"
+	"github.com/olekukonko/tablewriter"
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
 )
 
@@ -48,7 +51,29 @@ func (e *Engine) Query(query string) (*bleve.SearchResult, error) {
 	matchQ := bleve.NewMatchQuery(query)
 	search := bleve.NewSearchRequest(matchQ)
 	return e.index.Search(search)
-} 
+}
+
+func (e *Engine) ListResults(out io.Writer, res *bleve.SearchResult, metadata []metaconfig.Metadata) {
+	table := tablewriter.NewWriter(out)
+	table.SetHeader([]string{"name", "maintainers", "labels"})
+	for _, hit := range res.Hits {
+		var row []string
+		row = append(row, hit.ID)
+		for _, data := range metadata {
+			if data.Name == hit.ID {
+				row = append(row, strings.Join(data.Maintainers, ", "), strings.Join(data.Labels, ", "))
+			}
+		}
+
+		table.Append(row)
+	}
+
+	if table.NumLines() > 0 {
+		table.Render()
+	} else {
+		fmt.Fprintln(out, "No matches")
+	}
+}
 
 func (e *Engine) Close() error {
 	return e.index.Close()
