@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
 	"github.com/policy-hub/policy-hub-cli/pkg/search"
@@ -50,7 +51,7 @@ func (c *searchConfig) run(query string) error {
 		return fmt.Errorf("query engine: %w", err)
 	}
 
-	fmt.Println(res)
+	e.ListResults(os.Stdout, res, metadata)
 	return nil
 }
 

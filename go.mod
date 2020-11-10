@@ -11,6 +11,7 @@ require (
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
+	github.com/olekukonko/tablewriter v0.0.4
 	github.com/onsi/gomega v1.7.0
 	github.com/open-policy-agent/conftest v0.21.0
 	github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
