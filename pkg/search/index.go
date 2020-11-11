@@ -10,13 +10,13 @@ import (
 
 	"github.com/blevesearch/bleve"
 	"github.com/olekukonko/tablewriter"
+	"github.com/policy-hub/policy-hub-cli/pkg/helpers"
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
 )
 
 // IndexVersion indicates the version of the search index.
 // This is used to migrate between index versions.
 const IndexVersion = "v1"
-
 
 type Engine struct {
 	index bleve.Index
@@ -81,7 +81,7 @@ func (e *Engine) Close() error {
 
 // constructIndex builds a search index
 func constructIndex() (bleve.Index, error) {
-	cacheDir := cacheDirectory()
+	cacheDir := helpers.IndexPath()
 	if _, err := os.Stat(cacheDir); os.IsNotExist(err) {
 		return setupIndexDirectory()
 	}
@@ -93,7 +93,7 @@ func constructIndex() (bleve.Index, error) {
 func loadIndex() (bleve.Index, error) {
 	index, err := bleve.Open(indexDirectory())
 	if err == bleve.ErrorIndexPathDoesNotExist {
-		index, err := constructIndex(); 
+		index, err := constructIndex()
 		if err != nil {
 			return nil, fmt.Errorf("construct index: %w", err)
 		}
@@ -108,7 +108,7 @@ func loadIndex() (bleve.Index, error) {
 
 // setupIndexDirectory setups the index directory
 func setupIndexDirectory() (bleve.Index, error) {
-	cacheDir := cacheDirectory()
+	cacheDir := helpers.IndexPath()
 	if err := os.MkdirAll(cacheDir, os.ModePerm); err != nil {
 		return nil, fmt.Errorf("make search dir: %w", err)
 	}
@@ -117,7 +117,7 @@ func setupIndexDirectory() (bleve.Index, error) {
 	if err != nil {
 		return nil, fmt.Errorf("create version file: %w", err)
 	}
- 
+
 	mapping := bleve.NewIndexMapping()
 	index, err := bleve.New(indexDirectory(), mapping)
 	if err != nil {
@@ -127,19 +127,7 @@ func setupIndexDirectory() (bleve.Index, error) {
 	return index, nil
 }
 
-// cacheDirectory returns the directory to cache policy-cli configs
-func cacheDirectory() string {
-	const cacheDir = ".policy-hub"
-
-	homeDir, _ := os.UserHomeDir()
-
-	directory := filepath.Join(homeDir, cacheDir)
-	directory = filepath.ToSlash(directory)
-
-	return directory
-}
-
 // indexDirectory returns the directory to store the search index in
 func indexDirectory() string {
-	return filepath.Join(cacheDirectory(), "index")
+	return filepath.Join(helpers.IndexPath(), "index")
 }
