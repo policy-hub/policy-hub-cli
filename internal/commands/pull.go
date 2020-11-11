@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 
 	"github.com/open-policy-agent/conftest/downloader"
+	"github.com/policy-hub/policy-hub-cli/pkg/helpers"
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
 	"github.com/spf13/cobra"
 )
@@ -20,7 +21,7 @@ func newPullCommand() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVarP(&c.Repository, "repository", "r", "metadata/registries.yml", "Location of the repository to search.")
+	cmd.Flags().StringVarP(&c.Repository, "repository", "r", helpers.DefaultMetaDataFile(), "Location of the repository to search.")
 
 	return cmd
 }

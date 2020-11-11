@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/policy-hub/policy-hub-cli/pkg/helpers"
 	"github.com/policy-hub/policy-hub-cli/pkg/metaconfig"
 	"github.com/policy-hub/policy-hub-cli/pkg/search"
 	"github.com/spf13/cobra"
@@ -20,7 +21,7 @@ func newSearchCommand() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVarP(&c.Repository, "repository", "r", "metadata/registries.yml", "Location of the repository to search.")
+	cmd.Flags().StringVarP(&c.Repository, "repository", "r", helpers.DefaultMetaDataFile(), "Location of the repository to search.")
 
 	return cmd
 }
@@ -37,7 +38,7 @@ func (c *searchConfig) run(query string) error {
 
 	e, err := search.Load()
 	defer e.Close()
-	
+
 	if err != nil {
 		return fmt.Errorf("load engine: %w", err)
 	}
