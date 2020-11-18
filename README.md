@@ -15,7 +15,7 @@ The PolicyHub CLI aims to make policies searchable. We provide a standard format
 To search our registry, you can use the `search` command:
 
 ```bash
-> policy-hub search
+> policy-hub search k8s
 
 +---------------------------+---------------------------------+--------------------------------+
 |           NAME            |           MAINTAINERS           |             LABELS             |
