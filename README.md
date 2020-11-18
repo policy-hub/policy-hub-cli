@@ -35,6 +35,14 @@ To download a policy, use the `pull` command:
 > policy-hub pull konstraint
 ```
 
+## Make your policies discoverable
+
+Do you have policies that the community could benefit from too?
+Make them searchable for users of policy-hub by adding metadata for them 
+here (https://github.com/policy-hub/policy-hub-cli/blob/main/metadata/registries.yml) 
+and submitting a PR
+
+
 ## Contributing
 
 Join us make policies more searchable!
