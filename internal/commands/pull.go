@@ -22,12 +22,13 @@ func newPullCommand() *cobra.Command {
 	}
 
 	cmd.Flags().StringVarP(&c.Repository, "repository", "r", helpers.DefaultMetaDataFile(), "Location of the repository to search.")
-
+	cmd.Flags().StringVarP(&c.PolicyDir, "policy", "p", "", "Folder where the policies will be downloaded too")
 	return cmd
 }
 
 type pullConfig struct {
 	Repository string
+	PolicyDir string
 }
 
 func (c *pullConfig) run(name string) error {
@@ -47,7 +48,12 @@ func (c *pullConfig) run(name string) error {
 		return fmt.Errorf("could not find a name match in given repository")
 	}
 
-	err = downloader.Download(context.Background(), name, []string{urlPath})
+	policyDir := name
+	if c.PolicyDir != "" {
+		policyDir = c.PolicyDir
+	}
+	
+	err = downloader.Download(context.Background(), policyDir, []string{urlPath})
 	return nil
 }
 
