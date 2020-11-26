@@ -35,6 +35,12 @@ To download a policy, use the `pull` command:
 > policy-hub pull konstraint
 ```
 
+which will download the `konstraint` policies into a folder called `konstraint`. To overwrite the location where the policies will be downloaded too, you can specify the `--policy` flag, e.g.
+
+```bash
+> policy-hub pull konstraint --policy policy
+```
+
 ## Make your policies discoverable
 
 Do you have policies that the community could benefit from too?
