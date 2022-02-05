@@ -235,3 +235,16 @@
     - kubernetes
     - gatekeeper
 
+- path: https://github.com/instrumenta/policies/kubernetes
+  description: |
+    "A set of shared policies for use with Conftest and other Open Policy Agent tools"
+  maintainers:
+    - https://github.com/garethr
+    - https://github.com/jpreese
+  version: master
+  homepage: https://github.com/instrumenta/policies
+  name: instrumenta.policies
+  labels:
+    - k8s
+    - kubernetes
+    - gatekeeper
