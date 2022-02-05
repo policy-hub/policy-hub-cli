@@ -235,3 +235,19 @@
     - kubernetes
     - gatekeeper
 
+- path: https://github.com/fugue/regula/rego/rules
+  description: |
+    "Regula checks infrastructure as code templates (Terraform, CloudFormation, k8s manifests) for AWS, Azure, Google Cloud, and Kubernetes security and compliance using Open Policy Agent/Rego"
+  maintainers:
+    - https://github.com/fugue
+  version: master
+  homepage: https://github.com/fugue/regula
+  name: regula
+  labels:
+    - k8s
+    - kubernetes
+    - aws
+    - cloudformation
+    - terraform
+    - azure
+    - arm
